@@ -33,8 +33,7 @@ class App extends Component {
     try {
       const authors = await this.fetchAllAuthors();
       this.setState({
-        authors: authors,
-        loading: false
+        authors: authors
       });
     } catch (err) {
       console.error(err);
@@ -71,6 +70,10 @@ class App extends Component {
             render={props => (
               <AuthorsList {...props} authors={this.state.authors} />
             )}
+          />
+          <Route
+            path="/books/:bookCOLOR"
+            render={props => <BookList {...props} books={this.state.books} />}
           />
           <Route
             path="/books/"
